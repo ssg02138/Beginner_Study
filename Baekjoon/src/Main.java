@@ -20,7 +20,8 @@ public class Main {
 //        예제 출력 1
 //        Hello World!
 
-        System.out.println("Hello World!");
+        System.out.print("Hello World!");
+
     }
 
     public static void b_111() {
