@@ -2,9 +2,28 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
-    // funciton - parameter
     public static void main(String[] args) {
+        b_2557();
+    }
 
+    public static void b_2557() {
+//        문제
+//        Hello World!를 출력하시오.
+//
+//                입력
+//                없음
+//
+//        출력
+//        Hello World!를 출력하시오.
+//
+//                예제 입력 1
+//        예제 출력 1
+//        Hello World!
+
+        System.out.println("Hello World!");
+    }
+
+    public static void b_111() {
         Scanner sc = new Scanner(System.in);
 
         long a = sc.nextLong();
@@ -12,8 +31,6 @@ public class Main {
         long c = sc.nextLong();
 
         System.out.print(a+b+c);
-//        System.out.println("Test");
-//        b_1000("OH",'0');
     }
 
     public static void b_1000(String a, int b) {
@@ -29,10 +46,5 @@ public class Main {
 
         System.out.println(a);
         System.out.println(b);
-    }
-
-    public static void first() {
-        System.out.println("Hello world!");
-        System.out.println("Second Test");
     }
 }
