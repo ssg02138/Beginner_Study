@@ -4,6 +4,6 @@ public class Main {
     public static void main(String[] args) {
         ConditionalStatement a = new ConditionalStatement();
 
-        a.b_2884();
+        a.b_2525();
     }
 }
