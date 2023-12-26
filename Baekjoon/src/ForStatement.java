@@ -146,20 +146,49 @@ public class ForStatement {
 //            5000 8
 //    예제 출력 2
 //    No
-    Scanner sc = new Scanner(System.in);
-    int X = sc.nextInt();
-    int N = sc.nextInt();
-    int sum = 0;
+        Scanner sc = new Scanner(System.in);
+        int X = sc.nextInt();
+        int N = sc.nextInt();
+        int sum = 0;
 
         for (int i = 0; i < N; i++) {
             int a = sc.nextInt();
             int b = sc.nextInt();
             sum += (a * b);
         }
-        if (X==sum) {
+        if (X == sum) {
             System.out.println("Yes");
         } else {
             System.out.println("No");
         }
+    }
+
+
+    public static void b_25314() {
+//        입력
+//        첫 번째 줄에는 문제의 정수
+//        N이 주어진다.
+//        (4<=N<=1,000; N은 4의 배수)
+//
+//        출력
+//        혜아가 N바이트 정수까지 저장할 수 있다고 생각하는 정수 자료형의 이름을 출력하여라.
+//
+//        예제 입력 1
+//        4
+//        예제 출력 1
+//        long int
+//        예제 입력 2
+//        20
+//        예제 출력 2
+//        long long long long long int
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt();
+
+        for(int i=0; i<N; i++) {
+            if (i % 4 == 0) {
+                System.out.print("long ");
+            }
+        }
+        System.out.println("int");
     }
 }
