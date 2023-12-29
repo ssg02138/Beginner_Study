@@ -11,6 +11,6 @@ public class Main {
         ConditionalStatement a = new ConditionalStatement();
         ForStatement b = new ForStatement();
 
-        b.b_2439();
+        b.b_10952();
     }
 }
