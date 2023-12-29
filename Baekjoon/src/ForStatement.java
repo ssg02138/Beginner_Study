@@ -34,7 +34,7 @@ public class ForStatement {
         int a = sc.nextInt();
 
         for (int i = 1; i < 10; i++) {
-           System.out.println(a + " * " + i + " = " +(a * i));
+            System.out.println(a + " * " + i + " = " + (a * i));
         }
     }
 
@@ -191,7 +191,7 @@ public class ForStatement {
         Scanner sc = new Scanner(System.in);
         int N = sc.nextInt();
 
-        for(int i=0; i<N; i++) {
+        for (int i = 0; i < N; i++) {
             if (i % 4 == 0) {
                 System.out.print("long ");
             }
@@ -259,8 +259,8 @@ public class ForStatement {
         StringTokenizer st;
 
         for (int i = 0; i < n; i++) {
-            st = new StringTokenizer(br.readLine()," ");
-            bw.write(Integer.parseInt(st.nextToken()) + Integer.parseInt(st.nextToken()) +"\n");
+            st = new StringTokenizer(br.readLine(), " ");
+            bw.write(Integer.parseInt(st.nextToken()) + Integer.parseInt(st.nextToken()) + "\n");
         }
         br.close();
 
@@ -301,9 +301,9 @@ public class ForStatement {
         StringTokenizer st;
 
         for (int i = 1; i <= n; i++) {
-            st = new StringTokenizer(br.readLine()," ");
-            bw.write("Case #"+i+": ");
-            bw.write(Integer.parseInt(st.nextToken()) + Integer.parseInt(st.nextToken()) +"\n");
+            st = new StringTokenizer(br.readLine(), " ");
+            bw.write("Case #" + i + ": ");
+            bw.write(Integer.parseInt(st.nextToken()) + Integer.parseInt(st.nextToken()) + "\n");
         }
         br.close();
 
@@ -348,17 +348,47 @@ public class ForStatement {
 
         StringTokenizer st;
         for (int i = 1; i <= T; i++) {
-            st = new StringTokenizer(br.readLine()," ");
+            st = new StringTokenizer(br.readLine(), " ");
             a = Integer.parseInt(st.nextToken());
             b = Integer.parseInt(st.nextToken());
 
-            bw.write("Case #"+i+": ");
+            bw.write("Case #" + i + ": ");
             bw.write(a + " + " + b + " = ");
-            bw.write((a+b) + "\n");
+            bw.write((a + b) + "\n");
         }
         br.close();
 
         bw.flush();
         bw.close();
+    }
+
+
+    public static void b_2438() {
+//        문제
+//        첫째 줄에는 별 1개, 둘째 줄에는 별 2개, N번째 줄에는 별 N개를 찍는 문제
+//
+//                입력
+//        첫째 줄에 N(1 ≤ N ≤ 100)이 주어진다.
+//
+//        출력
+//        첫째 줄부터 N번째 줄까지 차례대로 별을 출력한다.
+//
+//                예제 입력 1
+//        5
+//        예제 출력 1
+//                  *
+//                  **
+//                  ***
+//                  ****
+//                  *****
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt();
+
+        for (int i = 1; i <= N; i++) {
+            for(int j = 0; j < i; j++) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
     }
 }
