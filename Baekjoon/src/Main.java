@@ -10,7 +10,8 @@ public class Main {
     public static void main(String[] args) throws IOException {
         ConditionalStatement a = new ConditionalStatement();
         ForStatement b = new ForStatement();
+        Array c = new Array();
 
-        b.b_10951();
+        c.b_10807();
     }
 }
