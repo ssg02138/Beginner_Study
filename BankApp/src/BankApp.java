@@ -1,8 +1,9 @@
 import java.util.Scanner;
+import java.util.Arrays;
 public class BankApp {
+    private static Account[] accounts = new Account[100];
+    private static int index = 0;
     public static void main(String[] args) {
-        static Account[] accounts = new Account[100];
-        static int index = 0;
 
         boolean isExit = false;
 
@@ -19,6 +20,7 @@ public class BankApp {
                     createAccount();
                     break;
                 case 2:
+                    checkAccount();
                     break;
                 case 3:
                     break;
@@ -44,7 +46,18 @@ public static void createAccount() {
     System.out.println("잔고: ");
     int balance = Integer.parseInt(sc.nextLine());
 
-    Account account = new Account();
-    accounts[index++] = account;
+     Account account = new Account(accountNumber, name, password, balance);
+     accounts[index++] = account;
 }
 
+private static Account checkAccount(String accountNumber) {
+    Account account=null;
+    for(int i =0;i<accouts.length;i++) {
+        if(accouts[i]!=null)
+            if(accouts[i].getAccountNumber().equals(accountNumber)) {
+                //문자열의 내용비교: 문자열1.equals(문자열2)
+                account = accouts[i];
+            }
+    }
+    return account;
+}
