@@ -1,7 +1,10 @@
+import java.text.DecimalFormat;
 import java.util.Scanner;
 public class BankApp {
-    static Account[] accountArray = new Account[100];
-    static int index = 0;
+    private static Account[] accountArray = new Account[100];
+    private static Scanner sc = new Scanner(System.in);
+    private static int seq=0;
+    private static boolean isCreated=false;
     public static void main(String[] args) {
 
         boolean isExit = false;
@@ -16,66 +19,88 @@ public class BankApp {
 
             int menu = Integer.parseInt(sc.nextLine());
             switch (menu) {
-                case 1:
-                    createAccount();
+                case 1: createAccount();
                     break;
-                case 2:
-                    //checkAccount();
+                case 2: accountList();
                     break;
-                case 3:
+                case 3: deposit();
                     break;
                 case 4:
                     isExit = true;
                     break;
             }
-
         } while(!isExit);
     }
-    public static void createAccount() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("계좌번호: ");
-        String accountNumber = sc.nextLine();
 
-        System.out.println("이름: ");
-        String name = sc.nextLine();
-
-        System.out.println("비밀번호: ");
-        String password = sc.nextLine();
-
-        System.out.println("잔고: ");
-        int balance = Integer.parseInt(sc.nextLine());
-
-        Account account = new Account(accountNumber, name, password, balance);
-        accountArray[index++] = account;
+    private static void createAccount() {
+        String ano = String.format(new DecimalFormat("0000").format(++seq));
+        System.out.print("이름>");
+        String name = sc.next();
+        System.out.print("비밀번호>");
+        String pwd = sc.next();
+        System.out.print("초기입금액>");
+        int amount = sc.nextInt();
+        for(int i=0;i<accountArray.length;i++) {
+            if(accountArray[i]==null) {
+                accountArray[i]
+                        =new Account(ano,name,pwd,amount);
+                System.out.println("계좌 등록 성공");
+                isCreated=true;
+                break;
+            }
+        }
     }
-//
-//    public static Account checkAccount(String accountNumber) {
-//        Account account=null;
-//        for(int i =0; i<accountArray.length; i++) {
-//            if(accountArray[i]!=null)
-//                if(accountArray[i].getAccountNumber().equals(accountNumber)) {
-//                    account = accountArray[i];
-//                }
-//        }
-//        return account;
-//    }
+
+    private static boolean isRegistered() {
+        return isCreated;
+    }
+
+    private static void accountList() {
+        if(!isRegistered()) {
+            System.out.println("먼저 계좌등록을 하세요");
+            return;
+        }
+        for(int i=0;i<accountArray.length;i++) {
+            if(accountArray[i]!=null) {
+                System.out.println(accountArray[i].getAno()+"\t"+
+                        accountArray[i].getName()+"\t"+
+                        accountArray[i].getPwd()+"\t"+
+                        accountArray[i].getBalance());
+            }
+        }
+    }
+
+    private static Account findAccount(String ano) {
+        Account account=null;
+        for(int i =0;i<accountArray.length;i++) {
+            if(accountArray[i]!=null)
+                if(accountArray[i].getAno().equals(ano)) {
+                    account = accountArray[i];
+                }
+        }
+        return account;
+    }
+
+
+    private static void deposit() {
+        if(!isRegistered()) {// if(!isCreated)
+            System.out.println("먼저 계좌등록을 하세요");
+            return;
+        }
+        accountList();
+        System.out.println("입금할 계좌번호를 선택하세요>");
+        Account account;
+        while(true) {
+            String ano = sc.next();
+            account = findAccount(ano);
+            if(account==null)
+                System.out.println("계좌번호를 확인하세요>");
+            else
+                break;
+        }
+        System.out.print("입금할 금액을 입력하세요>");
+        int amount = sc.nextInt();
+        account.deposit(amount);
+        System.out.println("예금 성공");
+    }
 }
-
-
-//private static void deposit() {
-//    System.out.println("입금할 계좌번호를 선택하세요.");
-//    //입금
-//    Account account;
-//    while(true) {
-//        String accountNumber = sc.next();//계좌번호 입력
-//        account = checkAccount(accountNumber);//입력된 값으로 계좌배열에서 해당하는 계좌정보를 찾아서 리턴받음
-//        if(account==null)//해당하는 계좌가 없으면
-//            System.out.println("계좌번호를 확인하세요.");
-//        else
-//            break;//계속 입력받다가 계좌번호가 맞아서 계좌정보를 얻어오면
-//    }//반복문을 빠져나감.
-//    System.out.print("입금할 금액을 입력하세요.");
-//    int amount = sc.nextInt();
-//    account.deposit(amount);//입금 처리
-//    System.out.println("예금 성공");
-//}
