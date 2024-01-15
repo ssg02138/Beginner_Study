@@ -498,18 +498,30 @@ public class Array {
 //        예제 출력 1
 //        3 4 1 2 5
         Scanner sc = new Scanner(System.in);
-        int N = sc.nextInt();
-        int arr[] = new int[N];
-        int M = sc.nextInt();
-        int reverseArr[] = new int[M];
 
-        for (int i = arr.length -1, j = 0; i >= 0; i--, j++) {
-            reverseArr[j] = arr[i];
+        int N = sc.nextInt();
+        int M = sc.nextInt();
+
+        int[] arr = new int[N];
+        for (int i = 0; i < N; i++) {
+            arr[i] = i + 1;
         }
 
-        for(int k = 0; k < arr.length; k++) {
-            System.out.print(arr[k] + " ");
-            }
+        for (int i = 0; i < M; i++) {
+            int a = sc.nextInt() - 1;
+            int b = sc.nextInt() - 1;
 
+            while (a < b) {
+                int temp = arr[a];
+                arr[a] = arr[b];
+                arr[b] = temp;
+                a++;
+                b--;
+            }
+        }
+        sc.close();
+
+        for (int i = 0; i < N; i++)
+            System.out.print(arr[i] + " ");
     }
 }
