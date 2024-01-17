@@ -12,6 +12,6 @@ public class Main {
         ForStatement b = new ForStatement();
         Array c = new Array();
 
-        c.b_10811();
+        c.b_1546();
     }
 }
